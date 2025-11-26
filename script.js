@@ -1,42 +1,30 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const formSection = document.getElementById("formSection");
-  const idCardSection = document.getElementById("idCard");
+const form = document.getElementById("studentForm");
+const idCard = document.getElementById("idCard");
+const idPhoto = document.getElementById("idPhoto");
+const idName = document.getElementById("idName");
+const idNumber = document.getElementById("idNumber");
+const idCourse = document.getElementById("idCourse");
 
-  const nameInput = document.getElementById("name");
-  const idInput = document.getElementById("idNum");
-  const courseInput = document.getElementById("course");
-  const photoInput = document.getElementById("photo");
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
 
-  const showName = document.getElementById("showName");
-  const showId = document.getElementById("showId");
-  const showCourse = document.getElementById("showCourse");
-  const cardPhoto = document.getElementById("cardPhoto");
+  // Get input values
+  const photoFile = document.getElementById("photo").files[0];
+  const name = document.getElementById("name").value;
+  const id = document.getElementById("id").value;
+  const course = document.getElementById("course").value;
 
-  let photoURL = "";
-
-  photoInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      photoURL = URL.createObjectURL(file);
+  if (photoFile) {
+    const reader = new FileReader();
+    reader.onload = function() {
+      idPhoto.style.backgroundImage = `url(${reader.result})`;
     }
-  });
+    reader.readAsDataURL(photoFile);
+  }
 
-  document.getElementById("generateBtn").addEventListener("click", () => {
-    const name = nameInput.value.trim();
-    const id = idInput.value.trim();
-    const course = courseInput.value.trim();
+  idName.textContent = name;
+  idNumber.textContent = id;
+  idCourse.textContent = course;
 
-    if (!name || !id || !course || !photoURL) {
-      alert("Please fill all fields and upload a photo");
-      return;
-    }
-
-    showName.textContent = name;
-    showId.textContent = id;
-    showCourse.textContent = course;
-    cardPhoto.src = photoURL;
-
-    formSection.classList.add("hidden");
-    idCardSection.classList.remove("hidden");
-  });
+  idCard.style.display = "block";
 });
