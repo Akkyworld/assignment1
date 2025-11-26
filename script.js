@@ -16,7 +16,7 @@ form.addEventListener("submit", function(e) {
   if (photoFile) {
     const reader = new FileReader();
     reader.onload = function(event) {
-      idPhoto.src = event.target.result;
+      idPhoto.src = event.target.result; // set src of img
     }
     reader.readAsDataURL(photoFile);
   }
