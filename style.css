@@ -3,7 +3,6 @@ body {
   background: #f0f2f5;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   padding: 20px;
 }
 
@@ -53,7 +52,7 @@ form button:hover {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: cover;  /* ensures image fits the circle */
+  object-fit: cover;
   margin-bottom: 10px;
 }
 
