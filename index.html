@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student ID Card Generator</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student ID Card Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Student ID Card Generator</h1>
+    <div class="container">
+        <!-- Form -->
+        <form id="studentForm">
+            <h2>Student Information</h2>
+            <input type="text" id="name" placeholder="Enter Name" required>
+            <input type="text" id="idNo" placeholder="Enter ID Number" required>
+            <input type="text" id="course" placeholder="Enter Course" required>
+            <input type="file" id="photo" accept="image/*" required>
+            <button type="submit">Generate ID Card</button>
+        </form>
 
-    <form id="studentForm">
-      <label for="photo">Photo:</label>
-      <input type="file" id="photo" accept="image/*" required><br>
-
-      <label for="name">Name:</label>
-      <input type="text" id="name" placeholder="Enter Name" required><br>
-
-      <label for="id">ID No:</label>
-      <input type="text" id="id" placeholder="Enter ID Number" required><br>
-
-      <label for="course">Course:</label>
-      <input type="text" id="course" placeholder="Enter Course Name" required><br>
-
-      <button type="submit">Generate ID Card</button>
-    </form>
-
-    <!-- ID Card Preview -->
-    <div class="id-card" id="idCard">
-      <img id="idPhoto" src="" alt="Student Photo">
-      <div class="info">
-        <p><strong>Name:</strong> <span id="idName"></span></p>
-        <p><strong>ID No:</strong> <span id="idNumber"></span></p>
-        <p><strong>Course:</strong> <span id="idCourse"></span></p>
-      </div>
+        <!-- ID Card -->
+        <div class="id-card" id="idCard">
+            <img id="cardPhoto" src="" alt="Student Photo">
+            <h2 id="cardName"></h2>
+            <p>ID No: <span id="cardID"></span></p>
+            <p>Course: <span id="cardCourse"></span></p>
+        </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
