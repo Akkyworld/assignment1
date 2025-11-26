@@ -8,7 +8,6 @@ const idCourse = document.getElementById("idCourse");
 form.addEventListener("submit", function(e) {
   e.preventDefault();
 
-  // Get input values
   const photoFile = document.getElementById("photo").files[0];
   const name = document.getElementById("name").value;
   const id = document.getElementById("id").value;
@@ -16,8 +15,8 @@ form.addEventListener("submit", function(e) {
 
   if (photoFile) {
     const reader = new FileReader();
-    reader.onload = function() {
-      idPhoto.style.backgroundImage = `url(${reader.result})`;
+    reader.onload = function(event) {
+      idPhoto.src = event.target.result;
     }
     reader.readAsDataURL(photoFile);
   }
