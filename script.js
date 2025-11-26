@@ -1,29 +1,29 @@
-const form = document.getElementById("studentForm");
-const idCard = document.getElementById("idCard");
-const idPhoto = document.getElementById("idPhoto");
-const idName = document.getElementById("idName");
-const idNumber = document.getElementById("idNumber");
-const idCourse = document.getElementById("idCourse");
+const form = document.getElementById('studentForm');
+const idCard = document.getElementById('idCard');
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent page reload
 
-  const photoFile = document.getElementById("photo").files[0];
-  const name = document.getElementById("name").value;
-  const id = document.getElementById("id").value;
-  const course = document.getElementById("course").value;
+    // Get form values
+    const name = document.getElementById('name').value;
+    const idNo = document.getElementById('idNo').value;
+    const course = document.getElementById('course').value;
+    const photo = document.getElementById('photo').files[0];
 
-  if (photoFile) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-      idPhoto.src = event.target.result; // set src of img
+    if(photo) {
+        const reader = new FileReader();
+        reader.onload = function() {
+            document.getElementById('cardPhoto').src = reader.result;
+        }
+        reader.readAsDataURL(photo);
     }
-    reader.readAsDataURL(photoFile);
-  }
 
-  idName.textContent = name;
-  idNumber.textContent = id;
-  idCourse.textContent = course;
+    // Set ID card values
+    document.getElementById('cardName').textContent = name;
+    document.getElementById('cardID').textContent = idNo;
+    document.getElementById('cardCourse').textContent = course;
 
-  idCard.style.display = "block";
+    // Hide form and show ID card
+    form.style.display = 'none';
+    idCard.style.display = 'block';
 });
