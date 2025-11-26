@@ -49,14 +49,12 @@ form button:hover {
   display: none;
 }
 
-.id-card .photo {
+.id-card img {
   width: 120px;
   height: 120px;
-  background: #ccc;
-  margin: 0 auto 10px;
   border-radius: 50%;
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;  /* ensures image fits the circle */
+  margin-bottom: 10px;
 }
 
 .id-card .info p {
